@@ -12,13 +12,15 @@ const {
 const express = require("express");
 const app = express();
 
+// 🔥 MUY IMPORTANTE: usar este puerto sí o sí
+const PORT = process.env.PORT || 10000;
+
 app.get("/", (req, res) => {
   res.send("bot vivo 😎");
 });
 
-const PORT = process.env.PORT;
-
-app.listen(PORT, () => {
+// 👇 FORZAMOS que escuche en 0.0.0.0 (CLAVE en Render)
+app.listen(PORT, "0.0.0.0", () => {
   console.log("🌐 web activa en puerto", PORT);
 });
 const { TelegramClient } = require("telegram");
