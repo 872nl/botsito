@@ -9,7 +9,17 @@ const {
   AttachmentBuilder,
   Events,
 } = require("discord.js");
+const express = require("express");
+const app = express();
 
+app.get("/", (req, res) => {
+  res.send("bot vivo 😎");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("web activa en puerto", PORT);
+});
 const { TelegramClient } = require("telegram");
 const { StringSession } = require("telegram/sessions");
 const input = require("input");
