@@ -16,9 +16,10 @@ app.get("/", (req, res) => {
   res.send("bot vivo 😎");
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+
 app.listen(PORT, () => {
-  console.log("web activa en puerto", PORT);
+  console.log("🌐 web activa en puerto", PORT);
 });
 const { TelegramClient } = require("telegram");
 const { StringSession } = require("telegram/sessions");
