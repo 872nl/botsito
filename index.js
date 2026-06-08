@@ -1860,9 +1860,10 @@ if (
   );
 
 }
-    queue.push(message);
-
-    processQueue();
+   if (command === "tg") {
+  queue.push(message);
+  processQueue();
+}
   }
 );
 
@@ -1916,7 +1917,6 @@ const blockedCommands = [
   "!addplan",
   "!removeplan",
   "!banuser",
-  "!me",
   "!addaccess",
   "!removeaccess"
 ];
