@@ -563,7 +563,7 @@ async function waitTelegramRepliesFromButton(
 
         // 2. IGNORAR LA FOTO DE CARGA DE SUKUNA PORQUE ES MEDIA
         if (hasMedia) {
-            break;
+            continue;
         }
 
       valid.push(msg);
@@ -574,13 +574,10 @@ async function waitTelegramRepliesFromButton(
       );
     }
 
-    const snapshot =
-      valid
-        .map(
-          m =>
-            `${m.id}:${m.message || ""}:${!!m.media}`
-        )
-        .join("|");
+const snapshot = valid
+            .filter(m => m.message || m.text) // Solo textos reales
+            .map(m => `${m.id}:${m.message || m.text || ""}`)
+            .join("|");
 
     if (
       snapshot ===
