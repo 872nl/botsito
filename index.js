@@ -482,7 +482,7 @@ const isLoading =
 async function waitTelegramRepliesFromButton(
   clickedMsgId,
   beforeId,
-  totalTime = 90000,
+  totalTime = 60000,
   interval = 1000
 ) {
   const targetBot =
@@ -557,15 +557,15 @@ async function waitTelegramRepliesFromButton(
       const hasMedia =
         !!msg.media;
 
-      if (
-        !hasButtons &&
-        !hasMedia &&
-        isLoadingText(
-          rawText
-        )
-      ) {
-        continue;
-      }
+     // Ignorar textos de carga normales
+        if (!hasButtons && !hasMedia && isLoadingText(rawText)) {
+            continue;
+        }
+
+        // IGNORAR LA FOTO DE SUKUNA PARA QUE NO TRABE EL /TELP NI SE DUPLIQUE
+        if (hasMedia && rawText.toLowerCase().includes("comandos")) {
+            continue;
+        }
 
       valid.push(msg);
 
