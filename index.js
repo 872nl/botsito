@@ -1,3 +1,17 @@
+const express = require("express");
+const app = express();
+
+// 🔥 Render necesita esto YA mismo
+const PORT = process.env.PORT || 10000;
+
+app.get("/", (req, res) => {
+  res.send("bot vivo 😎");
+});
+
+// 🔥 IMPORTANTE: 0.0.0.0
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("🌐 web activa en puerto", PORT);
+});
 require("dotenv").config();
 
 const {
@@ -9,20 +23,7 @@ const {
   AttachmentBuilder,
   Events,
 } = require("discord.js");
-const express = require("express");
-const app = express();
 
-// 🔥 MUY IMPORTANTE: usar este puerto sí o sí
-const PORT = process.env.PORT || 10000;
-
-app.get("/", (req, res) => {
-  res.send("bot vivo 😎");
-});
-
-// 👇 FORZAMOS que escuche en 0.0.0.0 (CLAVE en Render)
-app.listen(PORT, "0.0.0.0", () => {
-  console.log("🌐 web activa en puerto", PORT);
-});
 const { TelegramClient } = require("telegram");
 const { StringSession } = require("telegram/sessions");
 const input = require("input");
