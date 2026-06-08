@@ -482,7 +482,7 @@ const isLoading =
 async function waitTelegramRepliesFromButton(
   clickedMsgId,
   beforeId,
-  totalTime = 60000,
+  totalTime = 90000,
   interval = 1000
 ) {
   const targetBot =
@@ -563,7 +563,7 @@ async function waitTelegramRepliesFromButton(
 
         // 2. IGNORAR LA FOTO DE CARGA DE SUKUNA PORQUE ES MEDIA
         if (hasMedia) {
-            continue;
+            break;
         }
 
       valid.push(msg);
