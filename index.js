@@ -1347,12 +1347,12 @@ if (command === "removeseller") {
 }
 if (command === "staff") {
 
-  const owners = ownerIds
-    .map(id => `👑 <@${id}>`)
+const owners = (Array.isArray(ownerIds) ? ownerIds : [])
+  .map(id => ` 👑 <@${id}>`)
     .join("\n") || "Ninguno";
 
-  const sellers = sellerIds
-    .map(id => `💎 <@${id}>`)
+const sellers = (Array.isArray(sellerIds) ? sellerIds : [])
+  .map(id => ` <@${id}>`)
     .join("\n") || "Ninguno";
 
   return message.reply(`
