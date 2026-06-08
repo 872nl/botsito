@@ -554,16 +554,15 @@ async function waitTelegramRepliesFromButton(
         !!msg.replyMarkup
           ?.rows;
 
-      const hasMedia =
-        !!msg.media;
+      const hasMedia = !!msg.media || !!msg.photo || !!msg.document;
 
-     // Ignorar textos de carga normales
+        // // Ignorar textos de carga normales
         if (!hasButtons && !hasMedia && isLoadingText(rawText)) {
             continue;
         }
 
-        // IGNORAR LA FOTO DE SUKUNA PARA QUE NO TRABE EL /TELP NI SE DUPLIQUE
-        if (hasMedia && rawText.toLowerCase().includes("comandos")) {
+        // 2. IGNORAR LA FOTO DE CARGA DE SUKUNA PORQUE ES MEDIA
+        if (hasMedia) {
             continue;
         }
 
